@@ -1,7 +1,9 @@
 import cv2
 import numpy as np
 
+
 def make_transparent(image_path, output_path, target_color=(255, 255, 255)):
+
     # 이미지 로드
     img = cv2.imread(image_path, cv2.IMREAD_UNCHANGED)
 
@@ -14,13 +16,14 @@ def make_transparent(image_path, output_path, target_color=(255, 255, 255)):
     # 이미지 저장
     cv2.imwrite(output_path, img)
 
-make_transparent('your_sticker_path.png', 'your_sticker_path2.png')
+
+make_transparent('test_sticker.png', 'test_sticker_invi.png')
 
 # 얼굴 탐지기
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 # 스티커 이미지 로드 (배경이 투명한 PNG 파일 사용)
-sticker = cv2.imread('your_sticker_path2.png', cv2.IMREAD_UNCHANGED)
+sticker = cv2.imread('test_sticker_invi.png', cv2.IMREAD_UNCHANGED)
 
 # 웹캠 캡쳐 시작
 cap = cv2.VideoCapture(0)
