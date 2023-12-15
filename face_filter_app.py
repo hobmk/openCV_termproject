@@ -15,9 +15,9 @@ def make_transparent(image_path, target_color=(255, 255, 255)):
     return img
 
 # 얼굴 필터 이미지들 로드
-face_filter_1 = make_transparent('test_sticker.png')
-face_filter_2 = make_transparent('add_sticker.png')
-face_filter_3 = make_transparent('add_sticker2.png')  # 새로운 스티커 추가
+face_filter_1 = make_transparent('sticker_1.png')
+face_filter_2 = make_transparent('sticker_2.png')
+face_filter_3 = make_transparent('sticker_3.png')  # 새로운 스티커 추가
 
 # 현재 사용 중인 얼굴 필터
 current_face_filter = face_filter_1
@@ -44,7 +44,8 @@ while True:
     for (x, y, w, h) in faces:
         # 얼굴 영역 확장
         offset = 20  # 얼굴 영역을 좀 더 크게 설정
-        face_roi = frame_flipped[max(0, y - offset):min(frame_flipped.shape[0], y + h + offset),
+        y_offset = 30 # 필터를 좀 더 위로 이동
+        face_roi = frame_flipped[max(0, y - offset - y_offset):min(frame_flipped.shape[0], y + h + offset - y_offset),
                                   max(0, x - offset):min(frame_flipped.shape[1], x + w + offset)]
 
         # 현재 얼굴 필터 이미지 크기 조절 (크기 조절을 통해 스티커 크기 조절)
